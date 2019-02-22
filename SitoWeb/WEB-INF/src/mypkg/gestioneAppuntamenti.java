@@ -1,0 +1,40 @@
+// To save as "<CATALINA_HOME>\webapps\helloservlet\WEB-INF\src\mypkg\HelloServlet.java"
+package mypkg;
+ 
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+ 
+public class gestioneAppuntamenti extends HttpServlet {
+   @Override
+   public void doGet(HttpServletRequest request, HttpServletResponse response)
+               throws IOException, ServletException {
+      // Set the response message's MIME type
+      response.setContentType("text/html;charset=UTF-8");
+      // Allocate a output writer to write the response message into the network socket
+      PrintWriter out = response.getWriter();
+      
+ 
+      // Write the response message, in an HTML page
+      try {
+         out.println("<!DOCTYPE html>");
+         out.println("<html><head>");
+         out.println("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>");
+         out.println("<title>gestioneAppuntamenti</title></head>");
+         out.println("<body>");
+         out.println("<form action=/prenotaColloquio>Last Name: <br> <input type=text name=LastName><input type=submit value=Submit></form>");
+         out.println("<form ation=/prenotaColloquio>Classe: <br> <select name=classe><option value=1>1</option><option value=2>2</option><option value=3>3</option><option value=4>4</option><option value=5>5</option></select> E</form>");
+         // Echo client's request information
+         out.println("<p>Request URI: " + request.getRequestURI() + "</p>");
+         out.println("<p>Protocol: " + request.getProtocol() + "</p>");
+         out.println("<p>PathInfo: " + request.getPathInfo() + "</p>");
+         out.println("<p>Remote Address: " + request.getRemoteAddr() + "</p>");
+         // Generate a random number upon each request
+         out.println("<p>A Random Number: <strong>" + Math.random() + "</strong></p>");
+         out.println("</body>");
+         out.println("</html>");
+      } finally {
+         out.close();  // Always close the output writer
+      }
+   }
+}
